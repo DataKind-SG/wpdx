@@ -1,4 +1,10 @@
 import csv
+import pandas as pd
+import numpy as np
+from textblob import TextBlob
+
+in_file_path = '/home/kevan/Desktop/wpdx/water_point_data_exchange_complete_dataset.csv'
+out_file_path = '/home/kevan/Desktop/wpdx/cleaned_water_point_data_exchange_complete_dataset.csv'
 
 
 def clean_columns(input_file, output_file):
@@ -22,8 +28,13 @@ def clean_col_country_name(input_data):
     Clean values in column: "country_name"
     Trello card: https://trello.com/c/HHzNs0hS/1-column-countryname
     """
-    return input_data
+    df = pd.read_csv(in_file_path)
+    df_temp = df
+    df_temp_30 = df_temp.sample(frac=0.3)
+    cleaned_df = df_temp_30.head().apply(
+        lambda row: TextBlob(row).correct().__str__())
+    return cleaned_df
 
 
 if __name__ == '__main__':
-    clean_columns('wpdx_sample_data.csv', 'cleaned_wpdx_sample_data.csv')
+    clean_columns(in_file_path, out_file_path)
