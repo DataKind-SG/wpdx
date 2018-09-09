@@ -1,4 +1,6 @@
 import csv
+import pandas as pd
+import sys
 
 
 def clean_columns(input_file, output_file):
@@ -25,5 +27,24 @@ def clean_col_country_name(input_data):
     return input_data
 
 
+def clean_col_management(in_file_path, out_file_path):
+    """
+    Clean values in column: "management"
+    The code below cleans a particular value "Direct Government Operation" in the management column
+    Trello card: https://trello.com/c/DYWGoDG5/5-column-management
+    """
+
+    data = pd.read_csv(in_file_path)
+    data.loc[data['management'] == 'Direct Government Operation?,', 'management'] = 'Direct Government Operation'
+    data.to_csv(out_file_path, index=False)
+    return data
+
 if __name__ == '__main__':
-    clean_columns('wpdx_sample_data.csv', 'cleaned_wpdx_sample_data.csv')
+    ## Writing this so as to give a provision of providing file names at the command line.  
+    ## Ex -> python clean_wpdx_sample_data.py water_point_dataset.csv cleaned_water_point_dataset.csv
+    if len(sys.argv) == 3:
+        in_file_path = sys.argv[1] #Input file name
+        out_file_path = sys.argv[2] #Output file name
+        clean_columns(in_file_path, out_file_path)
+    else:
+        clean_columns('wpdx_sample_data.csv', 'cleaned_wpdx_sample_data.csv')
