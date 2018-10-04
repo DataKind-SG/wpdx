@@ -27,3 +27,14 @@ def clean_col_country_name(input_data):
 
 if __name__ == '__main__':
     clean_columns('wpdx_sample_data.csv', 'cleaned_wpdx_sample_data.csv')
+    
+def clean_col_status_id(input_data):
+    """
+    Clean values in column: "status_id"
+    Trello card: https://trello.com/c/nlLtLiI8/4-column-statusid
+    """
+    if input_data in ["Yes","No","Unknown","unknown","yes","no"]:
+        input_data = str.lower(input_data)
+    else:
+        input_data = "Error"    
+    return input_data
