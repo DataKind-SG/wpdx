@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[ ]:
-
-
 # UDF will skim through category lists of words that belong to either Partially Functional, Functional, Not Functional.
 # UDF goes through sequentially via list_partlydamaged, list_functional1, list_notfunctional, list_functional2
 # List of words were obtained by testing samples after filtering from top 10 countries that provided cumulative 85% of data.
@@ -165,10 +159,3 @@ def udf_status(x):
                                             break
 
     return(answer)
-
-
-# In[1]:
-
-
-get_ipython().system('jupyter nbconvert --to script clean_col_status_helper.ipynb')
-

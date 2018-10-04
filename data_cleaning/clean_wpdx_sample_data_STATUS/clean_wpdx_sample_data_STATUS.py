@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[7]:
-
-
 import clean_col_status_helper
 import csv
 
@@ -26,10 +20,4 @@ def clean_col_status(input_data):
     cleaned_data = clean_col_status_helper.udf_status(cleaned_data)
     
     return(cleaned_data)
-
-
-# In[1]:
-
-
-get_ipython().system('jupyter nbconvert --to script clean_wpdx_sample_data_STATUS.ipynb')
 
