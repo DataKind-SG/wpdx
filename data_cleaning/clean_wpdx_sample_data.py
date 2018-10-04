@@ -27,3 +27,16 @@ def clean_col_country_name(input_data):
 
 if __name__ == '__main__':
     clean_columns('wpdx_sample_data.csv', 'cleaned_wpdx_sample_data.csv')
+    
+    
+def clean_col_count(input_data):
+    """
+    Clean values in column: "count"
+    Trello card: https://trello.com/c/HHzNs0hS/1-column-countryname
+    """
+    try:
+        input_data = int(input_data)
+    except ValueError:
+        input_data = None
+        
+    return input_data
