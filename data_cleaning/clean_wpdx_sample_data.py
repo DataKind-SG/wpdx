@@ -36,5 +36,5 @@ def clean_col_status_id(input_data):
     if input_data in ["Yes","No","Unknown","unknown","yes","no"]:
         input_data = str.lower(input_data)
     else:
-        input_data = "Error"    
+        print("error in Status ID")
     return input_data
