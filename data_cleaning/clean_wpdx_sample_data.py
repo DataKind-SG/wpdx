@@ -1,4 +1,5 @@
 import csv
+from pprint import pprint
 
 
 def clean_columns(input_file, output_file):
@@ -23,6 +24,28 @@ def clean_col_country_name(input_data):
     Trello card: https://trello.com/c/HHzNs0hS/1-column-countryname
     """
     return input_data
+
+def clean_col_pay(input_data):
+    """
+    Clean values in column: "pay"
+    Trello card: https://trello.com/c/RWGeFx2e/6-column-pay
+    Assumption: When blank; we'll mark as UNKNOWN for now ..
+    """
+
+    final_data = "xxxx"
+    pprint(input_data)
+
+    if input_data == 'NA':
+        final_data = "UNKNOWN"
+
+    if input_data.strip() == '':
+        # print("Is EMPTY!")
+        final_data = "UNKNOWN"
+
+    if input_data == "yes":
+        final_data = "YES"
+
+    return final_data
 
 
 if __name__ == '__main__':
