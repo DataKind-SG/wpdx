@@ -14,8 +14,9 @@ def test_clean_col_pay():
     """
     assert clean_wpdx_sample_data.clean_col_pay('NA') == 'UNKNOWN'
     assert clean_wpdx_sample_data.clean_col_pay('') == 'UNKNOWN'
-    assert clean_wpdx_sample_data.clean_col_pay('yes') == 'Yes'
-    assert clean_wpdx_sample_data.clean_col_pay('no, water is free') == 'No'
-    assert clean_wpdx_sample_data.clean_col_pay('Is paid by someone else') == 'No'
-    assert clean_wpdx_sample_data.clean_col_pay('$6.00  per jar') == '??'
+    assert clean_wpdx_sample_data.clean_col_pay('            ') == 'UNKNOWN'
+    assert clean_wpdx_sample_data.clean_col_pay('yes') == 'YES'
+    # assert clean_wpdx_sample_data.clean_col_pay('no, water is free') == 'NO'
+    # assert clean_wpdx_sample_data.clean_col_pay('Is paid by someone else') == 'NO'
+    # assert clean_wpdx_sample_data.clean_col_pay('$6.00  per jar') == '??'
 
