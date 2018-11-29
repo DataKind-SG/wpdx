@@ -1,6 +1,8 @@
 import pytest
 import clean_wpdx_sample_data
 import pandas
+"""Import helper file for STATUS Col cleaning """
+import clean_col_status_helper
 
 # @pytest.mark.skip
 def test_clean_col_country_name():
@@ -30,3 +32,16 @@ def test_clean_col_adm1():
     """
     assert clean_wpdx_sample_data.clean_col_adm1('singapore') == 'SINGAPORE'
     assert clean_wpdx_sample_data.clean_col_adm1(' Singapore ') == 'SINGAPORE'
+
+
+def test_clean_col_status():
+    """
+    Testing the clean values in column: "status"
+    Trello card: https://trello.com/c/S4FjIDgo"
+    """
+    assert cleaning.clean_col_status('Partly Damaged') == 'Partially Functional with Damages'
+    assert cleaning.clean_col_status('absoLUte no daMAge') == 'Functional'
+    assert cleaning.clean_col_status('fOUND in BAD state') == 'Not Functional'
+    assert cleaning.clean_col_status('ok oPERatIOnal') == 'Functional'
+    assert cleaning.clean_col_status("ok") == "Functional"
+    assert cleaning.clean_col_status("Not Functional") == "Not Functional"

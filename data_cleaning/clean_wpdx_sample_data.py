@@ -1,5 +1,8 @@
 import csv
 import pandas
+""" Import helper file for STATUS Col cleaning"""
+import clean_col_status_helper
+
 
 def clean_columns(input_file, output_file):
     with open(input_file) as csvfile, open(output_file, 'wt') as writer:
@@ -62,6 +65,25 @@ def clean_col_adm1(input_data):
     """
     input_data = input_data.upper()
     input_data = input_data.strip()
+    return input_data
+
+def clean_col_status(input_data):
+    """
+    Clean values in column: "status"
+    Trello card: https://trello.com/c/S4FjIDgo"
+    """
+    cleaned_data = input_data
+
+    # Preprocessing clean up
+    # Remove all NaNs by converting into string text "Not Available"
+    input_data = "Not Available" if isinstance(input_data, float) else cleaned_data
+
+    # Convert to lower character
+    input_data = input_data.lower()
+
+    # Apply UDF from clean_col_status_helper
+    input_data = clean_col_status_helper.categorise_status(input_data)
+
     return input_data
 
 if __name__ == '__main__':
