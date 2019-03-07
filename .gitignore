@@ -115,3 +115,6 @@ dmypy.json
 
 # VS Code
 .vscode/
+
+# Clean dataset
+cleaned_wpdx_sample_data.csv
