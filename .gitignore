@@ -108,3 +108,10 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# vim
+**/*.swo
+**/*.swp
+
+# VS Code
+.vscode/
