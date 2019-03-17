@@ -66,3 +66,14 @@ def test_clean_col_management():
     assert cwsd.clean_col_management('Direct Government Operation?,') == 'Direct Government Operation'
     assert cwsd.clean_col_management('management') == 'Direct Government Operation'
 
+def test_clean_col_status():
+    """
+    Testing the clean values in column: "status"
+    Trello card: https://trello.com/c/S4FjIDgo"
+    """
+    assert cwsd.clean_col_status('Partly Damaged') == 'Partially Functional with Damages'
+    assert cwsd.clean_col_status('absoLUte no daMAge') == 'Functional'
+    assert cwsd.clean_col_status('fOUND in BAD state') == 'Not Functional'
+    assert cwsd.clean_col_status('ok oPERatIOnal') == 'Functional'
+    assert cwsd.clean_col_status("ok") == "Functional"
+    assert cwsd.clean_col_status("Not Functional") == "Not Functional"
